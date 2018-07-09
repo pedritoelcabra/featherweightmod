@@ -31,11 +31,25 @@ local function SetInitialVisibility()
 					local iDistance = Map.GetPlotDistance(startingPlot:GetX(), startingPlot:GetY(), iX, iY);
 					if (iDistance < 5) then
 						local iPlotIndex = Map.GetPlot(iX, iY):GetIndex();
-						pCurPlayerVisibility:ChangeVisibilityCount(iPlotIndex, 1);
+						pCurPlayerVisibility:ChangeVisibilityCount(iPlotIndex, 0);
 					end
 				end
 			end
 		end
+	end
+end
+
+-- ===========================================================================
+local function BuildWallsInCityStates()
+
+	-- Apply updates to all minors
+	local aPlayers = PlayerManager.GetAliveMinors();
+	for loop, pPlayer in ipairs(aPlayers) do
+
+		local csCapital = pPlayer:GetCities():GetCapitalCity();
+		
+		csCapital:GetBuildQueue():CreateBuilding(GameInfo.Buildings["BUILDING_WALLS"].Index);
+
 	end
 end
 
@@ -45,6 +59,10 @@ local function OnPlayerTurnActivated( player )
 	
 	if (player == 0 and currentTurn == 1) then
 		SetInitialVisibility();
+	end
+	
+	if (player == 0 and currentTurn == 10) then
+		BuildWallsInCityStates();
 	end
 end
 
