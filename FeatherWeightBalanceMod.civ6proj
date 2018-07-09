@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>FeatherWeight Balance Mod</Name>
+    <Guid>df3ebb04-ba86-43aa-bd5c-488050d79617</Guid>
+    <ProjectGuid>3c7aba82-e830-49ba-8c97-1a4fd95e9c15</ProjectGuid>
+    <ModVersion>1</ModVersion>
+    <Teaser>A very light mod designed to make the multiplayer experience more balanced without changing the gameplay.</Teaser>
+    <Description>A very light mod designed to make the multiplayer experience more balanced without changing the gameplay.</Description>
+    <Authors>pedrito_elcabra</Authors>
+    <SpecialThanks>
+    </SpecialThanks>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <AssemblyName>FeatherWeightBalanceMod</AssemblyName>
+    <RootNamespace>FeatherWeightBalanceMod</RootNamespace>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="SetBalanceValues"><File>Main.sql</File></UpdateDatabase><AddGameplayScripts id="AddScripts"><File>Main.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
+    <FrontEndActionData><![CDATA[<FrontEndActions />]]></FrontEndActionData>
+    <ModProperties>
+      <CustomProperties xmlns="" />
+    </ModProperties>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Main.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Main.lua">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
+</Project>
